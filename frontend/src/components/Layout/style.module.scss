@@ -1,0 +1,32 @@
+header {
+  padding: 1rem;
+  font-family: "Rubik 80s Fade", cursive;
+  font-size: 2rem;
+  background: rgb(200, 145, 209);
+  background: linear-gradient(
+    90deg,
+    rgba(117, 117, 237, 1) 0%,
+    rgba(232, 125, 236, 0.8556050145348837) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+
+main {
+  background: #1f2325;
+  padding-top: 5rem;
+}
+
+footer {
+  background: #000;
+  background: linear-gradient(to right, rgb(117, 117, 235), rgb(231, 100, 231));
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
