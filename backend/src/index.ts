@@ -2,9 +2,15 @@ import express from "express";
 import { config } from "dotenv";
 config();
 import mongoose from "mongoose";
+import cors from "cors";
+
 mongoose.set("strictQuery", true);
 
 const app = express();
+
+app.use(cors({ origin: "*" }));
+app.use(express.json());
+
 const port = 5050;
 
 app.get("/", (req, res) => {
