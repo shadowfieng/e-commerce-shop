@@ -1,10 +1,20 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const productSchema = new Schema({
+interface Product {
+  title: string;
+  price: number;
+  description: string;
+  keywords: string[];
+  category: string;
+}
+
+const productSchema = new Schema<Product>({
   title: String,
+  price: Number,
   description: String,
-  categories: [String],
+  keywords: String,
+  category: String,
 });
 
 const Product = mongoose.model("Product", productSchema);
