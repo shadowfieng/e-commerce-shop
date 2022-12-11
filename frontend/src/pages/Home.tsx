@@ -31,12 +31,10 @@ const Home = () => {
     <>
       {loading && <Spinner />}
 
-      {!loading && (
-        <Pagination
-          pagination={pagination}
-          onChangeItemsPerPage={changeProductsPerPage}
-        />
-      )}
+      <Pagination
+        pagination={pagination}
+        onChangeItemsPerPage={changeProductsPerPage}
+      />
 
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
         {!loading &&
