@@ -1,9 +1,9 @@
-import { Pagination } from "../types/pagination";
+import { TPagination } from "../types/pagination";
 import { TProduct } from "../types/product";
 import { API_URL } from "./config";
 
-type GetProductsResponse = {
-  pagination: Pagination;
+export type GetProductsResponse = {
+  pagination: TPagination;
   products: TProduct[];
 };
 
