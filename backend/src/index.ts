@@ -3,6 +3,7 @@ import { config } from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import { addProductController } from "./controllers/addProductController";
+import { getProductByIdController } from "./controllers/getProductByIdController";
 import { getProductsController } from "./controllers/getProductsController";
 config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 const port = 5050;
 
 app.get("/products", getProductsController);
+app.get("/products/:productId", getProductByIdController);
 app.post("/products", addProductController);
 
 mongoose.connect(process.env.MONGO_DB_URL!).then(() => {
