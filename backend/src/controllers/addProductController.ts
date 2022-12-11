@@ -1,14 +1,18 @@
+import { TypedResponseWithError } from "./../interfaces/util";
 import { TypedRequestBody, TypedResponse } from "../interfaces/util";
 import Product from "../models/Product";
 
 export const addProductController = async (
   req: TypedRequestBody<Product>,
-  res: TypedResponse<Product | { error: string }>
+  res: TypedResponse<Product>
 ) => {
   const { category, description, title, price, keywords } = req.body;
 
   if (!title || !price) {
-    res.json({ error: "An error occured!" });
+    (res as TypedResponseWithError).json({
+      statusCode: 400,
+      error: "An error occured!",
+    });
   }
 
   const newProduct = new Product({
