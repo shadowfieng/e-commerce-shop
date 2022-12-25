@@ -10,16 +10,19 @@ export const getProductsController = async (
 ) => {
   const page = parseInt(req.query.page);
   const limit = parseInt(req.query.limit);
-  const productsToSlice = limit * page - limit;
-
+  const from = limit * page - limit;
+  const to = limit * page;
   const products = await Product.find();
+  const total = products.length;
+  const pagesCount = Math.ceil(total / limit);
 
   res.json({
-    products: products.slice(productsToSlice, limit * page),
+    products: products.slice(from, to),
     pagination: {
       limit,
-      total: products.length,
+      total,
       page,
+      pagesCount,
     },
   });
 };
