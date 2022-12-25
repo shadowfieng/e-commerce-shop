@@ -1,22 +1,33 @@
-import { useState } from "react";
 import { TPagination } from "../../types/pagination";
 import Select from "../Select";
 
 const elementsPerPage = [10, 25, 50, 75, 100];
 
-type Props = {
-  pagination?: TPagination;
-  onChangeItemsPerPage: (itemsPerPage: string) => void;
+const initialPagination: TPagination = {
+  total: 10,
+  limit: 10,
+  page: 1,
+  pagesCount: 1,
 };
 
-const Pagination = ({ pagination, onChangeItemsPerPage }: Props) => {
-  const { total, limit } = pagination ?? { total: 10, limit: 10 };
-  const [page, setPage] = useState(1);
+type Props = {
+  pagination?: TPagination;
+  loading: boolean;
+  onChangeItemsPerPage: (itemsPerPage: string) => void;
+  onChangePage: (newPage: number) => void;
+};
 
-  const pagesCount = Math.round(total / limit);
+const Pagination = ({
+  pagination,
+  loading,
+  onChangeItemsPerPage,
+  onChangePage,
+}: Props) => {
+  const { page, pagesCount } = pagination ?? initialPagination;
 
   const pageClickHandler = (pageIndex: number) => {
-    setPage(pageIndex);
+    if (loading) return;
+    onChangePage(pageIndex);
   };
 
   return (
